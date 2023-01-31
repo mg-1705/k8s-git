@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flask
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask
+  namespace: flask
+  labels:
+    app: flask
+spec:
+  type: NodePort
+  selector:
+    app: flask
+  ports:
+    - port: 5000
+      targetPort: 5000
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  namespace: flask
+  labels:
+    app: flask
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+        - image: madhur17/flask:latest
+          name: flask
+          ports:
+            - containerPort: 5000
+              name: flaskhello
+
+
