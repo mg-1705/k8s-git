@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 RUN cd /etc/apt
-RUN sed -i 's/in\./us\./g' sources.list
+RUN ls -al
 RUN apt-get update && apt-get install -y tzdata && apt install -y python3.8 python3-pip
 RUN apt install python3-dev libpq-dev nginx -y
 RUN pip install django gunicorn psycopg2
