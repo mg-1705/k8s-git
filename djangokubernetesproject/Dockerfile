@@ -4,7 +4,7 @@ RUN echo $(date)
 RUN apt install ntp -y
 RUN cd /etc/apt && ls -al && sed -i 's/in\./us\./g' sources.list
  
-RUN apt update && apt install -y python3.8 python3-pip
+RUN apt update 
 RUN apt install python3-dev libpq-dev nginx -y
 RUN pip install django gunicorn psycopg2
 ADD . /app
