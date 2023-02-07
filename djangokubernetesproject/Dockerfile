@@ -3,7 +3,7 @@ RUN sudo apt update 2>/dev/null | grep packages | cut -d '.' -f 1
 RUN echo $(date)
 RUN cd /etc/apt && ls -al && sed -i 's/in\./us\./g' sources.list
  
-RUN apt-get update && apt-get install -y tzdata && apt install -y python3.8 python3-pip
+RUN apt-get update && apt install -y python3.8 python3-pip
 RUN apt install python3-dev libpq-dev nginx -y
 RUN pip install django gunicorn psycopg2
 ADD . /app
