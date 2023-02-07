@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 RUN apt update 2>/dev/null | grep packages | cut -d '.' -f 1
 RUN echo $(date)
-RUN apt install ntp
+RUN apt install ntp -y
 RUN cd /etc/apt && ls -al && sed -i 's/in\./us\./g' sources.list
  
 RUN apt-get update && apt install -y python3.8 python3-pip
