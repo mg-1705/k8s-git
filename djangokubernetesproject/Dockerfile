@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-RUN cd /etc/apt && ls -al
+RUN cd /etc/apt && ls -al &&sed -i 's/in\./us\./g' sources.list
 
 RUN apt-get update && apt-get install -y tzdata && apt install -y python3.8 python3-pip
 RUN apt install python3-dev libpq-dev nginx -y
