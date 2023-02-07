@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+RUN sudo apt update 2>/dev/null | grep packages | cut -d '.' -f 1
 RUN apt install ntp && service ntp restart 
 RUN echo $(date)
 RUN cd /etc/apt && ls -al && sed -i 's/in\./us\./g' sources.list
