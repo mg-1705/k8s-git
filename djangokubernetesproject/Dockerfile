@@ -1,6 +1,7 @@
 FROM ubuntu
 # RUN apt update 2>/dev/null | grep packages | cut -d '.' -f 1
 RUN echo $(date)
+RUN apt update -y
 RUN apt install -y tzdata
 RUN echo 'Asia/Kolkata' > /etc/timezone
 RUN dpkg-reconfigure --frontend noninteractive tzdata
