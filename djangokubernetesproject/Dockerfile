@@ -1,10 +1,11 @@
 FROM ubuntu:20.04
 RUN sudo apt update 2>/dev/null | grep packages | cut -d '.' -f 1
 RUN echo $(date)
+RUN sudo apt install ntp
 RUN cd /etc/apt && ls -al && sed -i 's/in\./us\./g' sources.list
  
-RUN apt-get update && apt install -y python3.8 python3-pip
-RUN apt install python3-dev libpq-dev nginx -y
+RUN sudo apt-get update && sudo apt install -y python3.8 python3-pip
+RUN sudo apt install python3-dev libpq-dev nginx -y
 RUN pip install django gunicorn psycopg2
 ADD . /app
 WORKDIR /app
